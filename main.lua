@@ -18,28 +18,28 @@ local function drawInWorld()
 		playerPosition = player.getPosition()
 	end
   
-to2D = aimingAt:screenPosition()
+	to2D = aimingAt:screenPosition()
   
 	-- Drawing.
-draw.line(playerPosition:screenPosition(), to2D, Vec4:new(0,0,0,255), 2)
-draw.circle(playerPosition:screenPosition(), 8, Vec4:new(201, 201, 201,255),4)
-draw.circle(to2D, 8, Vec4:new(201, 201, 201,255),4)
+	draw.line(playerPosition:screenPosition(), to2D, Vec4:new(0,0,0,255), 2)
+	draw.circle(playerPosition:screenPosition(), 8, Vec4:new(201, 201, 201,255),4)
+	draw.circle(to2D, 8, Vec4:new(201, 201, 201,255),4)
 
-  -- Get distance.
-local distance = playerPosition:distanceTo(aimingAt)
-local stringDistance = string.format("%.2f", distance)
+  	-- Get distance.
+	local distance = playerPosition:distanceTo(aimingAt)
+	local stringDistance = string.format("%.2f", distance)
 
-  -- Vector math for middle line text.
-local differenceVector = Vec3:new(0, 0, 0)
-differenceVector.x = aimingAt.x - playerPosition.x
-differenceVector.y = aimingAt.y - playerPosition.y
-differenceVector.z = aimingAt.z - playerPosition.z
+	 -- Vector math for middle line text.
+	local differenceVector = Vec3:new(0, 0, 0)
+	differenceVector.x = aimingAt.x - playerPosition.x
+	differenceVector.y = aimingAt.y - playerPosition.y
+	differenceVector.z = aimingAt.z - playerPosition.z
 
-  -- Text Drawing.
-local scaledPos = aimingAt:add(differenceVector:scale(-.5)):screenPosition()
-scaledPos.y = scaledPos.y + 10
-scaledPos.x = scaledPos.x + 10
-draw.text(stringDistance, scaledPos, Vec4:new(0,0,0,255), 18, "Verdana")
+  	-- Text Drawing.
+	local scaledPos = aimingAt:add(differenceVector:scale(-.5)):screenPosition()
+	scaledPos.y = scaledPos.y + 10
+	scaledPos.x = scaledPos.x + 10
+	draw.text(stringDistance, scaledPos, Vec4:new(0,0,0,255), 18, "Verdana")
 
 end
 
